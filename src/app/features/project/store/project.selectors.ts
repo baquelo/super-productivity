@@ -1,12 +1,14 @@
 import { Project, ProjectState } from '../project.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { JiraCfg } from '../../issue/providers/jira/jira.model';
+import { ClickupCfg } from '../../issue/providers/clickup/clickup.model';
 import { GithubCfg } from '../../issue/providers/github/github.model';
 import {
   CALDAV_TYPE,
   GITHUB_TYPE,
   GITLAB_TYPE,
   JIRA_TYPE,
+  CLICKUP_TYPE,
 } from '../../issue/issue.const';
 import { GitlabCfg } from '../../issue/providers/gitlab/gitlab';
 import { exists } from '../../../util/exists';
@@ -43,6 +45,11 @@ export const selectProjectById = createSelector(
 export const selectJiraCfgByProjectId = createSelector(
   selectProjectById,
   (p: Project): JiraCfg => p.issueIntegrationCfgs[JIRA_TYPE] as JiraCfg,
+);
+
+export const selectClickupCfgByProjectId = createSelector(
+  selectProjectById,
+  (p: Project): ClickupCfg => p.issueIntegrationCfgs[CLICKUP_TYPE] as ClickupCfg,
 );
 
 export const selectGithubCfgByProjectId = createSelector(

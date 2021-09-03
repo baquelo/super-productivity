@@ -6,6 +6,7 @@ import { select, Store } from '@ngrx/store';
 import * as shortid from 'shortid';
 import { IssueIntegrationCfg, IssueProviderKey } from '../issue/issue.model';
 import { JiraCfg } from '../issue/providers/jira/jira.model';
+import { ClickupCfg } from '../issue/providers/clickup/clickup.model';
 import { GithubCfg } from '../issue/providers/github/github.model';
 import { Actions, ofType } from '@ngrx/effects';
 import { map, shareReplay, switchMap, take } from 'rxjs/operators';
@@ -14,7 +15,7 @@ import { SnackService } from '../../core/snack/snack.service';
 import { T } from '../../t.const';
 import { BreakNr, BreakTime, WorkContextType } from '../work-context/work-context.model';
 import { WorkContextService } from '../work-context/work-context.service';
-import { GITHUB_TYPE, GITLAB_TYPE, JIRA_TYPE } from '../issue/issue.const';
+import { GITHUB_TYPE, GITLAB_TYPE, JIRA_TYPE, CLICKUP_TYPE } from '../issue/issue.const';
 import { GitlabCfg } from '../issue/providers/gitlab/gitlab';
 import { ExportedProject } from './project-archive.model';
 import { CaldavCfg } from '../issue/providers/caldav/caldav.model';
@@ -39,6 +40,7 @@ import {
   selectGithubCfgByProjectId,
   selectGitlabCfgByProjectId,
   selectJiraCfgByProjectId,
+  selectClickupCfgByProjectId,
   selectProjectBreakNrForProject,
   selectProjectBreakTimeForProject,
   selectProjectById,
@@ -99,6 +101,10 @@ export class ProjectService {
     return this._store$.pipe(select(selectJiraCfgByProjectId, { id: projectId }));
   }
 
+  getClickupCfgForProject$(projectId: string): Observable<ClickupCfg> {
+    return this._store$.pipe(select(selectClickupCfgByProjectId, { id: projectId }));
+  }
+
   getGithubCfgForProject$(projectId: string): Observable<GithubCfg> {
     return this._store$.pipe(select(selectGithubCfgByProjectId, { id: projectId }));
   }
@@ -133,6 +139,8 @@ export class ProjectService {
       return this.getGithubCfgForProject$(projectId);
     } else if (issueProviderKey === JIRA_TYPE) {
       return this.getJiraCfgForProject$(projectId);
+    } else if (issueProviderKey === CLICKUP_TYPE) {
+      return this.getClickupCfgForProject$(projectId);
     } else if (issueProviderKey === GITLAB_TYPE) {
       return this.getGitlabCfgForProject$(projectId);
     } else {

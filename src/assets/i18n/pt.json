@@ -362,6 +362,128 @@
         "WELCOME_USER": "Bem-vindo {{user}}!"
       }
     },
+    "CLUCKUP": {
+      "BANNER": {
+        "BLOCK_ACCESS_MSG": "Clickup: A fim de impedir o desligamento da API, o acesso foi bloqueado pelo Super Productivity. Você provavelmente deve verificar suas configurações do jira!",
+        "BLOCK_ACCESS_UNBLOCK": "Desbloquear"
+      },
+      "CFG_CMP": {
+        "ALWAYS_ASK": "Sempre abrir dialogo",
+        "DONE": "Status para conclusão da tarefa",
+        "DO_NOT": "Não faça a transição",
+        "ENABLE": "Ativar integração com Clickup",
+        "ENABLE_TRANSITIONS": "Ativar tratamento de transição",
+        "IN_PROGRESS": "Status para iniciar a tarefa",
+        "LOAD_SUGGESTIONS": "Carregar sugestões",
+        "MAP_CUSTOM_FIELDS": "Mapear campos personalizados",
+        "MAP_CUSTOM_FIELDS_INFO": "Infelizmente, alguns dados do Clickup são salvos em campos personalizados que são diferentes para cada instalação. Se você deseja incluir esses dados, precisa selecionar o campo personalizado apropriado para eles.",
+        "OPEN": "Status para Pausar Tarefa",
+        "SELECT_ISSUE_FOR_TRANSITIONS": "Selecione uma issue para carregar as transições disponíveis",
+        "STORY_POINTS": "Story Points"
+      },
+      "DIALOG_CONFIRM_ASSIGNMENT": {
+        "MSG": "<strong>{{summary}}</strong> está atualmente atribuído a <strong>{{assignee}}</strong>. Deseja atribuir a si mesmo?",
+        "OK": "Fazer isso!"
+      },
+      "DIALOG_INITIAL": {
+        "TITLE": "Configurar Clickup para o Projeto"
+      },
+      "DIALOG_TRANSITION": {
+        "CHOOSE_STATUS": "Escolha o status para atribuir",
+        "CURRENT_ASSIGNEE": "Responsável atual:",
+        "CURRENT_STATUS": "Status atual:",
+        "TITLE": "Clickup: Atualizar status",
+        "UPDATE_STATUS": "Atualizar status",
+        "TASK_NAME": "Nome da Tarefa:"
+      },
+      "DIALOG_WORKLOG": {
+        "CURRENTLY_LOGGED": "Hora atualmente registrada:",
+        "INVALID_DATE": "O valor digitado não é uma data!",
+        "SAVE_WORKLOG": "Salvar log de trabalho",
+        "STARTED": "Iniciado",
+        "SUBMIT_WORKLOG_FOR": "Envie um log de trabalho para Clickup para",
+        "TIME_SPENT": "Tempo gasto",
+        "TITLE": "Clickup: Enviar log de trabalho"
+      },
+      "FORM": {
+        "IS_AUTO_ADD_TO_BACKLOG": "Adicionar automaticamente problemas não resolvidos do GitHub para o backlog",
+        "IS_AUTO_POLL": "Pesquisar automaticamente problemas importados do git em busca de alterações",
+        "IS_SEARCH_ISSUES_FROM_GITHUB": "Mostrar issues do GitHub como sugestões qando adicionar novas tarefas",
+        "REPO": "\"username/repositoryName\" para o repositório git que você deseja rastrear"
+      },
+      "FORM_ADV": {
+        "AUTO_ADD_BACKLOG_JQL_QUERY": "JQL usado para adicionar tarefas automaticamente ao backlog",
+        "IS_ADD_WORKLOG_ON_SUB_TASK_DONE": "Abrir caixa de diálogo para enviar o log de trabalho a jira quando a subtarefa for concluída",
+        "IS_AUTO_ADD_TO_BACKLOG": "Adicionar automaticamente problemas ao backlog do Clickup",
+        "IS_AUTO_POLL_TICKETS": "Verifique os problemas importados para alterações automaticamente e notificar",
+        "IS_CHECK_TO_RE_ASSIGN_TICKET_ON_TASK_START": "Verifique se o problema atualmente trabalhado está atribuído ao usuário atual",
+        "IS_WORKLOG_ENABLED": "Abrir caixa de diálogo para enviar o log de trabalho a Clickup quando a tarefa estiver concluída",
+        "SEARCH_JQL_QUERY": "Consulta JQL para limitar as tarefas do pesquisador"
+      },
+      "FORM_CRED": {
+        "API_TOKEN": "API TOKEN"
+      },
+      "FORM_SECTION": {
+        "ADV_CFG": "Configurações avançadas",
+        "CREDENTIALS": "Credenciais",
+        "HELP_ARR": {
+          "H1": "Configurações Básicas",
+          "H2": "Configurações do log de trabalho",
+          "H3": "Transições padrão",
+          "P1_1": "Forneça um nome de login (pode ser encontrado na sua página de perfil) e um <a target=\"_blank\" href=\"https://confluence.atlassian.com/cloud/api-tokens-938839638.html\" target=\"_blank\">API token</a> ou senha, se você não puder gerar uma por algum motivo. Às vezes, as versões mais recentes do Clickup funcionam apenas com o token. ",
+          "P1_2": "Você também precisa especificar uma consulta JQL que é usada para as sugestões para adicionar tarefas do Clickup. Se precisar de ajuda, confira este link <a target=\"_blank\" href=\"https://confluence.atlassian.com/jirasoftwarecloud/advanced-searching-764478330.html\" target=\"_blank\">https://confluence.atlassian.com/jirasoftwarecloud/advanced-searching-764478330.html</a>.",
+          "P1_3": "Você também pode configurar, se desejar automaticamente (por exemplo, sempre que visitar a exibição de planejamento), adicionar todas as novas tarefas especificadas por uma consulta JQL customizada ao backlog.",
+          "P1_4": "Outra opção é \"Verifique se o ticket atual está atribuído ao usuário atual\". Se ativado e você estiver começando, será feita uma verificação se você estiver atualmente atribuído a esse ticket no Clickup, se não aparecer uma caixa de diálogo na qual você pode optar por atribuir o ticket a si mesmo.",
+          "P2_1": "Existem várias opções para determinar quando e como você deseja enviar um log de trabalho. Ativar <em>'Abrir caixa de diálogo do log de trabalho para adicionar um log de trabalho ao Clickup quando a tarefa estiver concluída'</em> abre uma caixa de diálogo para adicionar um log de trabalho toda vez que você marcar uma tarefa do Clickup como concluída. Portanto, lembre-se de que os logs de trabalho serão adicionados além de tudo rastreado até o momento. Portanto, se você marcar uma tarefa como concluída pela segunda vez, talvez não queira enviar o tempo de trabalho completo para a tarefa novamente.",
+          "P2_2": "<em>'Abre a caixa de diálogo do log de trabalho quando a subtarefa é concluída e não para tarefas com as próprias subtarefas'</em> abre uma caixa de diálogo do log de trabalho toda vez que você marca uma subtarefa de um problema do Clickup como concluída. Você já acompanha seu tempo através das subtarefas, nenhuma caixa de diálogo é aberta depois que você marca a tarefa Clickup como concluída.",
+          "P2_3": "<em>'Enviar atualizações para o log de trabalho automaticamente sem caixa de diálogo'</em> faz o que diz. Como marcar uma tarefa como executada várias vezes faz com que todo o tempo de trabalho seja rastreado duas vezes, isso não é recomendado.",
+          "P3_1": "Aqui você pode reconfigurar suas transições padrão. O Clickup permite uma ampla configuração de transições que geralmente entram em ação como colunas diferentes no seu painel ágil Clickup. Não podemos fazer suposições sobre onde e quando fazer a transição de suas tarefas e você precisa defina-o manualmente"
+        }
+      },
+      "ISSUE_CONTENT": {
+        "ASSIGNEE": "Resposável",
+        "AT": "em",
+        "ATTACHMENTS": "Anexos",
+        "CHANGED": "Alterado",
+        "COMMENTS": "Comentarios",
+        "COMPONENTS": "Componentes",
+        "DESCRIPTION": "Descrição",
+        "LIST_OF_CHANGES": "Lista de mudanças",
+        "MARK_AS_CHECKED": "Marcar atualizações como checadas",
+        "ON": "em",
+        "STATUS": "Status",
+        "STORY_POINTS": "Story Points",
+        "SUMMARY": "Indíce",
+        "WORKLOG": "Log de Trabalho",
+        "WRITE_A_COMMENT": "Comentar"
+      },
+      "S": {
+        "ADDED_WORKLOG_FOR": "Clickup: log de trabalho adicionado para {{issueKey}}",
+        "EXTENSION_NOT_LOADED": "Extensão de superprodutividade não carregada. Atualizar a página pode ajudar",
+        "IMPORTED_MULTIPLE_ISSUES": "Clickup: importou {{issuesLength}} novos issues do Clickup para o backlog",
+        "IMPORTED_SINGLE_ISSUE": "Clickup: issue importado \"{{issueText}}\" do Clickup para o backlog",
+        "INSUFFICIENT_SETTINGS": "Configurações insuficientes fornecidas para Clickup",
+        "ISSUE_NO_UPDATE_REQUIRED": "Clickup: \"{{issueText}}\" já está atualizado",
+        "ISSUE_UPDATE": "Clickup: dados atualizados para \"{{issueText}}\" ",
+        "MANUAL_UPDATE_ISSUE_SUCCESS": "Clickup: dados atualizados para \"{{issueText}}\" ",
+        "MISSING_ISSUE_DATA": "Clickup: Foram encontradas tarefas com dados de problemas ausentes. Recarregando.",
+        "NO_AUTO_IMPORT_JQL": "Clickup: Nenhuma consulta de pesquisa definida para importação automática",
+        "NO_VALID_TRANSITION": "Clickup: nenhuma transição válida configurada",
+        "POLLING": "Clickup: Mudanças na pesquisa de problemas",
+        "TIMED_OUT": "Clickup: solicitação expirada",
+        "TRANSITION": "Clickup: defina o problema \"{{issueKey}}\" como \"{{name}}\" ",
+        "TRANSITIONS_LOADED": "Clickup: Transições carregadas. Use as opções abaixo para atribuí-las",
+        "TRANSITION_SUCCESS": "Clickup: defina o problema {{issueKey}} como <strong> {{selectedTransition}} </strong>",
+        "UNABLE_TO_REASSIGN": "Clickup: Não foi possível reatribuir o ticket a si mesmo, porque você não especificou um nome de usuário. Visite as configurações."
+      },
+      "STEPPER": {
+        "CREDENTIALS": "Credenciais",
+        "DONE": "Agora você terminou.",
+        "LOGIN_SUCCESS": "Login efetuado com sucesso!",
+        "TEST_CREDENTIALS": "Testar credenciais",
+        "WELCOME_USER": "Bem-vindo {{user}}!"
+      }
+    },
     "METRIC": {
       "BANNER": {
         "CHECK": "Consegui!"
@@ -495,7 +617,8 @@
         "SETUP_CALDAV": "Configurar integração com Caldav",
         "SETUP_GIT": "Configurar integração com GitHub ",
         "SETUP_GITLAB": "Configurar integração com GitLab ",
-        "SETUP_JIRA": "Configurar integração com Jira "
+        "SETUP_JIRA": "Configurar integração com Jira ",
+        "SETUP_CLICKUP": "Configurar integração com Clickup "
       },
       "FORM_BASIC": {
         "L_TITLE": "Nome do Projeto",

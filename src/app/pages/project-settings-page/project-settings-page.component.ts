@@ -24,6 +24,7 @@ import { ISSUE_PROVIDER_FORM_CFGS } from '../../features/issue/issue.const';
 import { GLOBAL_CONFIG_FORM_CONFIG } from '../../features/config/global-config-form-config.const';
 import { IS_ELECTRON } from '../../app.constants';
 import { DEFAULT_JIRA_CFG } from '../../features/issue/providers/jira/jira.const';
+import { DEFAULT_CLICKUP_CFG } from '../../features/issue/providers/clickup/clickup.const';
 import { DEFAULT_GITHUB_CFG } from '../../features/issue/providers/github/github.const';
 import {
   WorkContextAdvancedCfg,
@@ -107,6 +108,9 @@ export class ProjectSettingsPageComponent implements OnInit, OnDestroy {
           if (!this.issueIntegrationCfgs.JIRA) {
             this.issueIntegrationCfgs.JIRA = DEFAULT_JIRA_CFG;
           }
+          if (!this.issueIntegrationCfgs.CLICKUP) {
+            this.issueIntegrationCfgs.CLICKUP = DEFAULT_CLICKUP_CFG;
+          }
           if (!this.issueIntegrationCfgs.GITHUB) {
             this.issueIntegrationCfgs.GITHUB = DEFAULT_GITHUB_CFG;
           }
@@ -178,6 +182,8 @@ export class ProjectSettingsPageComponent implements OnInit, OnDestroy {
 
   getIssueIntegrationCfg(key: IssueProviderKey): IssueIntegrationCfg {
     if (!(this.issueIntegrationCfgs as any)[key]) {
+      console.log('this.issueIntegrationCfgs', this.issueIntegrationCfgs);
+      console.log('key', key);
       throw new Error('Invalid issue integration cfg');
     }
     return (this.issueIntegrationCfgs as any)[key];

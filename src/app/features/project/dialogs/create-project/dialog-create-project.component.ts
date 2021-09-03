@@ -13,9 +13,11 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { ProjectService } from '../../project.service';
 import { DEFAULT_PROJECT } from '../../project.const';
 import { JiraCfg } from '../../../issue/providers/jira/jira.model';
+import { ClickupCfg } from '../../../issue/providers/clickup/clickup.model';
 import { CREATE_PROJECT_BASIC_CONFIG_FORM_CONFIG } from '../../project-form-cfg.const';
 import { IssueIntegrationCfgs } from '../../../issue/issue.model';
 import { DialogJiraInitialSetupComponent } from '../../../issue/providers/jira/jira-view-components/dialog-jira-initial-setup/dialog-jira-initial-setup.component';
+import { DialogClickupInitialSetupComponent } from '../../../issue/providers/clickup/clickup-view-components/dialog-clickup-initial-setup/dialog-clickup-initial-setup.component';
 import { SS_PROJECT_TMP } from '../../../../core/persistence/ls-keys.const';
 import { Subscription } from 'rxjs';
 import {
@@ -46,6 +48,7 @@ export class DialogCreateProjectComponent implements OnInit, OnDestroy {
   T: typeof T = T;
   projectData: ProjectCopy | Partial<ProjectCopy> = DEFAULT_PROJECT;
   jiraCfg?: JiraCfg;
+  clickupCfg?: ClickupCfg;
   githubCfg?: GithubCfg;
   gitlabCfg?: GitlabCfg;
   caldavCfg?: CaldavCfg;
@@ -181,6 +184,24 @@ export class DialogCreateProjectComponent implements OnInit, OnDestroy {
     );
   }
 
+  openClickupCfg(): void {
+    this._subs.add(
+      this._matDialog
+        .open(DialogClickupInitialSetupComponent, {
+          restoreFocus: true,
+          data: {
+            clickupCfg: this.clickupCfg,
+          },
+        })
+        .afterClosed()
+        .subscribe((clickupCfg: ClickupCfg) => {
+          if (clickupCfg) {
+            this._saveClickupCfg(clickupCfg);
+          }
+        }),
+    );
+  }
+
   openGithubCfg(): void {
     this._subs.add(
       this._matDialog
@@ -245,6 +266,20 @@ export class DialogCreateProjectComponent implements OnInit, OnDestroy {
         this.projectData.id,
         'JIRA',
         this.jiraCfg,
+      );
+    }
+  }
+
+  private _saveClickupCfg(clickupCfg: ClickupCfg): void {
+    this.clickupCfg = clickupCfg;
+    this._cd.markForCheck();
+
+    // if we're editing save right away
+    if (this.projectData.id) {
+      this._projectService.updateIssueProviderConfig(
+        this.projectData.id,
+        'CLICKUP',
+        this.clickupCfg,
       );
     }
   }

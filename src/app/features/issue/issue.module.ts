@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JiraIssueModule } from './providers/jira/jira-issue/jira-issue.module';
+import { ClickupIssueModule } from './providers/clickup/clickup-issue/clickup-issue.module';
 import { IssueHeaderComponent } from './issue-header/issue-header.component';
 import { IssueContentComponent } from './issue-content/issue-content.component';
 import { GithubIssueModule } from './providers/github/github-issue/github-issue.module';
@@ -12,6 +13,7 @@ import { CaldavIssueModule } from './providers/caldav/caldav-issue/caldav-issue.
   imports: [
     CommonModule,
     JiraIssueModule,
+    ClickupIssueModule,
     GithubIssueModule,
     GitlabIssueModule,
     CaldavIssueModule,

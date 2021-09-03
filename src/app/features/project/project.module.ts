@@ -8,6 +8,7 @@ import { ProjectService } from './project.service';
 import { DialogCreateProjectComponent } from './dialogs/create-project/dialog-create-project.component';
 import { UiModule } from '../../ui/ui.module';
 import { JiraViewComponentsModule } from '../issue/providers/jira/jira-view-components/jira-view-components.module';
+import { ClickupViewComponentsModule } from '../issue/providers/clickup/clickup-view-components/clickup-view-components.module';
 import { GithubViewComponentsModule } from '../issue/providers/github/github-view-components/github-view-components.module';
 import { DialogGitlabInitialSetupModule } from '../issue/providers/gitlab/dialog-gitlab-initial-setup/dialog-gitlab-initial-setup.module';
 import { DialogCaldavInitialSetupModule } from '../issue/providers/caldav/dialog-caldav-initial-setup/dialog-caldav-initial-setup.module';
@@ -19,6 +20,7 @@ import { DialogCaldavInitialSetupModule } from '../issue/providers/caldav/dialog
     EffectsModule.forFeature([ProjectEffects]),
     UiModule,
     JiraViewComponentsModule,
+    ClickupViewComponentsModule,
     GithubViewComponentsModule,
     DialogGitlabInitialSetupModule,
     DialogCaldavInitialSetupModule,

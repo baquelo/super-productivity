@@ -3,6 +3,7 @@ export enum BannerId {
   StartTrackingReminder = 'StartTrackingReminder',
   GoogleLogin = 'GoogleLogin',
   JiraUnblock = 'JiraUnblock',
+  ClickupUnblock = 'ClickupUnblock',
   InstallWebApp = 'InstallWebApp',
   Offline = 'Offline',
   TimeEstimateExceeded = 'TimeEstimateExceeded',

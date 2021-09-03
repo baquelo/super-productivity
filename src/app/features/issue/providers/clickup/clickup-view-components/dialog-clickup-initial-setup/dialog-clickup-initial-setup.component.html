@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>
+  <mat-icon class="dialog-header-icon" svgIcon="clickup"></mat-icon>
+  <span>{{T.F.CLICKUP.DIALOG_INITIAL.TITLE|translate}}</span>
+</h1>
+<mat-dialog-content>
+  <clickup-cfg-stepper
+    (saveCfg)="saveClickupCfg($event)"
+    [cfg]="clickupCfg"
+  ></clickup-cfg-stepper>
+</mat-dialog-content>

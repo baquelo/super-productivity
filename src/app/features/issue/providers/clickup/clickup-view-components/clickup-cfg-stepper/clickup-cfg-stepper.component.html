@@ -1,0 +1,101 @@
+<div class="wrapper">
+  <mat-horizontal-stepper [linear]="true" dynamicHeight>
+    <mat-step [stepControl]="credentialsFormGroup">
+      <form (submit)="saveStepForm(clickupCfg)" [formGroup]="credentialsFormGroup">
+        <ng-template matStepLabel
+          >{{T.F.CLICKUP.STEPPER.CREDENTIALS|translate}}</ng-template
+        >
+
+        <p
+          [innerHTML]="T.G.EXTENSION_INFO|translate"
+          [ngClass]="HelperClasses.isHideForAdvancedFeatures"
+        ></p>
+
+        <formly-form
+          (modelChange)="clickupCfg=$event"
+          [fields]="credentialsFormConfig"
+          [form]="credentialsFormGroup"
+          [model]="clickupCfg"
+        >
+          <div *ngIf="user" [@expand] class="welcome">
+            <img
+              [src]="user.avatarUrls && user.avatarUrls['48x48']"
+              alt="User Avatar"
+              class="user-avatar"
+            />
+            <div class="welcome-txt">
+              {{T.F.CLICKUP.STEPPER.LOGIN_SUCCESS|translate}}<br />
+              {{T.F.CLICKUP.STEPPER.WELCOME_USER|translate:{user: user.displayName} }}<br />
+            </div>
+          </div>
+
+          <div class="center-wrapper">
+            <button
+              (click)="testCredentials()"
+              [disabled]="!credentialsFormGroup.valid"
+              mat-raised-button
+            >
+              <mat-icon *ngIf="!isTestCredentialsSuccess">import_export</mat-icon>
+              <mat-icon *ngIf="isTestCredentialsSuccess">checkmark</mat-icon>
+              {{T.F.CLICKUP.STEPPER.TEST_CREDENTIALS|translate}}
+            </button>
+            <button
+              [disabled]="!credentialsFormGroup.valid"
+              color="primary"
+              mat-raised-button
+              matStepperNext
+              type="submit"
+            >
+              {{T.G.NEXT|translate}}
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </div>
+        </formly-form>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="advancedSettingsFormGroup">
+      <form (submit)="saveStepForm(clickupCfg)" [formGroup]="advancedSettingsFormGroup">
+        <ng-template matStepLabel>Advanced</ng-template>
+        <formly-form
+          (modelChange)="clickupCfg=$event"
+          [fields]="advancedSettingsFormConfig"
+          [form]="advancedSettingsFormGroup"
+          [model]="clickupCfg"
+        >
+          <div class="center-wrapper">
+            <button mat-raised-button matStepperPrevious>
+              <mat-icon>arrow_backward</mat-icon>
+              {{T.G.PREVIOUS|translate}}
+            </button>
+            <button
+              [disabled]="!advancedSettingsFormGroup.valid"
+              color="primary"
+              mat-raised-button
+              matStepperNext
+              type="submit"
+            >
+              <mat-icon>arrow_forward</mat-icon>
+              {{T.G.NEXT|translate}}
+            </button>
+          </div>
+        </formly-form>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      {{T.F.CLICKUP.STEPPER.DONE|translate}}
+      <div class="center-wrapper">
+        <button mat-raised-button matStepperPrevious>
+          <mat-icon>arrow_backward</mat-icon>
+          {{T.G.PREVIOUS|translate}}
+        </button>
+        <button (click)="saveConfig()" color="primary" mat-raised-button type="button">
+          <mat-icon>save</mat-icon>
+          {{T.G.SAVE|translate}}
+        </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

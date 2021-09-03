@@ -25,6 +25,15 @@
         </button>
       </div>
       <div class="item">
+        <button (click)="openClickupCfg()" color="primary" mat-button type="button">
+          <mat-icon *ngIf="!clickupCfg?.isEnabled" svgIcon="clickup"></mat-icon>
+          <mat-icon *ngIf="clickupCfg?.isEnabled">checkmark</mat-icon>
+          <span style="padding-left: 8px"
+            >{{T.F.PROJECT.D_CREATE.SETUP_CLICKUP|translate}}</span
+          >
+        </button>
+      </div>
+      <div class="item">
         <button (click)="openGithubCfg()" color="primary" mat-button type="button">
           <mat-icon *ngIf="!githubCfg?.repo" svgIcon="github"></mat-icon>
           <mat-icon *ngIf="githubCfg?.repo">checkmark</mat-icon>
